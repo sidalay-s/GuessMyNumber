@@ -5,11 +5,8 @@ let score = 20;
 let highscore = 0;
 let won = false;
 
-const messageText = function(text) {
-    document.querySelector(".message").textContent = text;
-} 
-const scoreText = function(text) {
-    document.querySelector(".score").textContent = text;
+const displayText = function(element, text) {
+    document.querySelector(element).textContent = text;
 }
 
 document.querySelector(".check").addEventListener("click", function() {
@@ -17,10 +14,10 @@ document.querySelector(".check").addEventListener("click", function() {
     
     if (!won) {
         if (!guess) {
-            messageText("No number!");
+            displayText(".message", "No number!");
         }
         else if (guess === secretNumber) {
-            messageText("Correct number!");
+            displayText(".message", "Correct number!");
         }
         else if (guess !== secretNumber) {
             if (score > 1) {
