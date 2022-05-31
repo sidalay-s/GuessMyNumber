@@ -5,9 +5,12 @@ let score = 20;
 let highscore = 0;
 let won = false;
 
-const messageText = function(message) {
-    document.querySelector(".message").textContent = message;
+const messageText = function(text) {
+    document.querySelector(".message").textContent = text;
 } 
+const scoreText = function(text) {
+    document.querySelector(".score").textContent = text;
+}
 
 document.querySelector(".check").addEventListener("click", function() {
     const guess = Number(document.querySelector(".guess").value);
@@ -20,7 +23,16 @@ document.querySelector(".check").addEventListener("click", function() {
             messageText("Correct number!");
         }
         else if (guess !== secretNumber) {
-            guess > secretNumber ? messageText("Too high!") : messageText("Too low!");
+            if (score > 1) {
+                guess > secretNumber ? messageText("Too high!") : messageText("Too low!");
+                --score;
+                document.querySelector(".score").textContent = score;
+            }
+            else {
+                messageText("You have lost!");
+                document.querySelector(".score").textContent = 0;
+            }
         }
     }
+
 })
