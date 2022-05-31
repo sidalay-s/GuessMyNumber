@@ -24,12 +24,16 @@ document.querySelector(".check").addEventListener("click", function() {
         }
         // correct input
         else if (guess === secretNumber) {
+            won = true;
             displayText(".message", "Correct number!");
             displayText(".number", secretNumber);
-            won = true;
+            grabElement(".message").style.color = "#60b347";
+            grabElement(".number").style.backgroundColor = "#60b347";
+            grabElement(".number").style.width = "30rem";
             if (score > highscore) {
                 highscore = score
                 displayText(".highscore", score);
+                grabElement(".highscore").style.color = "#60b347";
             }
         }
         // incorrect input
@@ -42,6 +46,10 @@ document.querySelector(".check").addEventListener("click", function() {
             else {
                 displayText(".message", "You have lost!");
                 displayText(".score", 0);
+                displayText(".number", secretNumber);
+                grabElement(".number").style.color = "#eee";
+                grabElement(".message").style.color = "red";
+                grabElement(".number").style.backgroundColor = "red";
             }
         }
     }
