@@ -9,6 +9,10 @@ const displayText = function(element, text) {
     document.querySelector(element).textContent = text;
 }
 
+const grabElement = function(element) {
+    return document.querySelector(element);
+}
+
 document.querySelector(".check").addEventListener("click", function() {
     const guess = Number(document.querySelector(".guess").value);
     
