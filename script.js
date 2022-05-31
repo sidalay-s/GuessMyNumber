@@ -12,13 +12,23 @@ const displayText = function(element, text) {
 document.querySelector(".check").addEventListener("click", function() {
     const guess = Number(document.querySelector(".guess").value);
     
+    // if user has not won
     if (!won) {
+        // empty input
         if (!guess) {
             displayText(".message", "No number!");
         }
+        // correct input
         else if (guess === secretNumber) {
             displayText(".message", "Correct number!");
+            displayText(".number", secretNumber);
+            won = true;
+            if (score > highscore) {
+                highscore = score
+                displayText(".highscore", score);
+            }
         }
+        // incorrect input
         else if (guess !== secretNumber) {
             if (score > 1) {
                 guess > secretNumber ? displayText(".message", "Too high!") : displayText(".message", "Too low!");
